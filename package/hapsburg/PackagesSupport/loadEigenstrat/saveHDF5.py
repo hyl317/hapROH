@@ -150,7 +150,6 @@ def mpileup2hdf5(path2mpileup, refHDF5, iid="", s=-np.inf, e=np.inf, outPath="",
     minor_foc = 0
     l = len(pos)
     base2index = {'A':0, 'C':1, 'G':2, 'T':3}
-    t1 = time.time()
     with open(path2mpileup) as f:
         for line in f:
             rc = np.zeros(4)
@@ -190,7 +189,6 @@ def mpileup2hdf5(path2mpileup, refHDF5, iid="", s=-np.inf, e=np.inf, outPath="",
                 if coverage > 1:
                     major_adj += np.max(rc)
                     minor_adj += np.sum(rc) - np.max(rc)
-    print(f'time taken to read mpileup: {time.time() - t1:.2f} seconds')
     if output:
         print(f'number of major reads at flanking sites: {int(major_adj)}')
         print(f'number of minor reads at flanking sites: {int(minor_adj)}')
@@ -218,7 +216,6 @@ def mpileup2hdf5(path2mpileup, refHDF5, iid="", s=-np.inf, e=np.inf, outPath="",
     if len(iid) == 0:
         iid = bamFileName[:bamFileName.find(".mpileup")]
     
-    t1 = time.time()
     with h5py.File(hdf5Name, 'w') as f0:
         nonmiss = np.sum(ad[:,0,:], axis=1) > 0
         l = np.sum(nonmiss)
@@ -240,7 +237,6 @@ def mpileup2hdf5(path2mpileup, refHDF5, iid="", s=-np.inf, e=np.inf, outPath="",
         f_gt[:] = gt[nonmiss]
         f_samples[:] = np.array([iid]).astype("S50")
         print(f'saving sample as {iid} in {hdf5Name}')
-    print(f'time taken to save hdf5: {time.time() - t1:.2f} seconds')
 
     # the second return value is the number of sites covered by at least 1 read
     if minor_adj + major_adj == 0:

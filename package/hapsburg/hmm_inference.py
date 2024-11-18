@@ -15,7 +15,6 @@ import numdifftools as ndt
 import math
 from scipy.optimize import minimize
 from scipy.optimize import newton
-from memory_profiler import profile
 
 
 import hapsburg

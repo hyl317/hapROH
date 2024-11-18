@@ -31,7 +31,6 @@ setup(
             'console_scripts': [
                 'hapConX = hapsburg.hapCONX:main',
                 'hapCon_ROH = hapsburg.hapCon_ROH:main',
-                'hapROH_WGS = hapsburg.hapROH_WGS:main',
             ]
         },
 )

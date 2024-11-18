@@ -40,6 +40,8 @@ def main():
     parser.add_argument('-p', action="store", dest="prefix", type=str, required=False, default="hapCon")
     parser.add_argument('--log', action="store_true", dest="log",
                         help="Output a log file.")
+    parser.add_argument('--lowmem', action="store_true", dest="lowmem", required=False, default=False,
+                        help="Use low memory mode.")
     args = parser.parse_args()
 
     #sys.path.insert(0, "/mnt/archgen/users/yilei/tools/hapROH/package")
@@ -70,4 +72,4 @@ def main():
             n_ref=2504, diploid_ref=True, exclude_pops=exclude_pops, conPop=conpop, 
             h5_path1000g = args.ref, meta_path_ref = args.meta, folder_out="", 
             c=args.c, roh_jump=args.jump, e_rate_ref=args.miscopy, lowmem=args.lowmem, 
-            logfile=args.log, cleanup=False, prefix=args.prefix)
+            logfile=args.log, cleanup=False, prefix=args.prefix, lowmem=args.lowmem)

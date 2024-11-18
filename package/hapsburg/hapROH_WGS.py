@@ -1,9 +1,8 @@
 import argparse
 import h5py
-from hapsburg.PackagesSupport.hapsburg_run import hapCon_chrom_BFGS
 import pandas as pd
 import os
-from hapsburg.PackagesSupport.hapsburg_run import hapsb_chrom_lowmem, hapsb_ind_lowmem
+from hapsburg.PackagesSupport.hapsburg_run import hapsb_ind
 from hapsburg.PackagesSupport.loadEigenstrat.saveHDF5 import mpileup2hdf5
 from hapsburg.PackagesSupport.parallel_runs.helper_functions import multi_run
 from multiprocessing import set_start_method
@@ -30,6 +29,8 @@ def main():
                         help="Number of processes to use.")
     parser.add_argument('--out', action="store", dest="out", type=str, required=False, default="",
                         help="folder to store output files")
+    parser.add_argument('--lowmem', action="store_true", dest="lowmem", required=False, default=False,
+                        help="Use low memory mode.")
     args = parser.parse_args()
 
     # check if the reference panel has binary-encoded genotypes
@@ -57,7 +58,7 @@ def main():
 
     ################################### call ROH ##################################
     ## first, run without contamination
-    df = hapsb_ind_lowmem(iid, chs=range(1,23), 
+    df = hapsb_ind(iid, chs=range(1,23), 
         path_targets_prefix = os.path.join(args.out, 'hdf5'),
         h5_path1000g = args.ref, meta_path_ref = args.meta,
         folder_out=os.path.join(args.out, 'hapROH'), prefix_out="",
@@ -65,7 +66,7 @@ def main():
         processes=args.processes, delete=False, output=True, save=True, save_fp=False, 
         n_ref=2504, diploid_ref=True, exclude_pops=[], readcounts=True, random_allele=False, downsample=downsample, 
         c=0.0, roh_min_l_final=0.04, roh_in=1, roh_out=20, roh_jump=300, e_rate=err, e_rate_ref=1e-3, 
-        logfile=True, combine=True, file_result="_roh_full.csv")
+        logfile=True, combine=True, file_result="_roh_full.csv", lowmem=args.lowmem)
     
 if __name__ == "__main__":
     main()
