@@ -1,7 +1,7 @@
 hapROH
 ==================
 
-Scope of the Method
+Scope
 **************************
 This software identifies runs of homozygosity in human (ancient) DNA data.
 
@@ -32,12 +32,12 @@ These showcase applications of hapROH that you can use as application templates.
 These notebooks walk you through typical applications of hapROH. All you need is your Eigenstrat file and the reference genome data (available via the link below), and you are good to go to run your own ROH calling!
 
 
-Download reference Data
+Downloading reference data
 **************************
 
 hapROH currently uses global 1000 Genome data (n=5008 haplotypes from 2504 individuals), filtered to bi-allelic 1240K SNPs.  We use the .hdf5 format for the reference panel, which also contains data for the genetic map.
 
-You can download the prepared reference data, including the necessary metadata .csv file `here: <https://www.dropbox.com/s/0qhjgo1npeih0bw/1000g1240khdf5.tar.gz?dl=0>`_. 
+You can download the prepared reference data, including the necessary metadata .csv file `here: <https://www.dropbox.com/s/0qhjgo1npeih0bw/1000g1240khdf5.tar.gz?dl=0>`_ 
 
 and unpack it with 
 
