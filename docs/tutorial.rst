@@ -26,7 +26,7 @@ These showcase applications of hapROH that you can use as application templates.
 
 3. How to call IBD on the X chromosome between two male X chromosomes: **callIBD_maleX_vignette**
 
-4. How to estimate effective population sizes from inferred ROH using a likelihood framework **estimateNe_vignette**
+4. How to estimate effective population sizes from inferred ROH using a likelihood framework: **estimateNe_vignette**
 
 
 These notebooks walk you through typical applications of hapROH. All you need is your ``eigenstrat`` file and the reference genome data (available via the link below), and you are good to go to run your own ROH calling!
